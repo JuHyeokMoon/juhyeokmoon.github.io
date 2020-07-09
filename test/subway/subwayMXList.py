@@ -1,5 +1,5 @@
 import csv
-f = open('subwaySearch/2020년 06월  교통카드 통계자료.csv')
+f = open('test/subway/2020년 06월  교통카드 통계자료.csv')
 data = csv.reader(f)
 
 rate = 0.0

@@ -1,5 +1,5 @@
 import csv
-f = open('subwaySearch/2020년 06월  교통카드 통계자료.csv')
+f = open('test/subway/2020년 06월  교통카드 통계자료.csv')
 data = csv.reader(f)
 
 mx = 0
@@ -11,8 +11,8 @@ for row in data:
     for i in range(4, 8):
         row[i] = row[i].replace(",", "")
         row[i] = int(row[i])
-    if row[6] != 0:
-        rate = row[4]/row[6]
+    if row[6] != 0:             #에러 처리 
+        rate = row[4]/row[6]    #무임승차 대비 유임승차비율이 가장 높은 역
         if rate > mx:
             mx = rate
             mx_row = row
