@@ -1,5 +1,5 @@
 import csv
-f = open('test/population/202006_202006_연령별인구현황_월간_전국.csv')
+f = open('test/population/202006_202006_연령별인구현황_월간.csv')
 data = csv.reader(f)
 
 # for row in data:
@@ -29,7 +29,7 @@ for row in data:    #for가 돌아가면 data.line_num이 1씩 증가하고
             i = i.replace(",", "")
             home.append(int(i))
 #for를 돌리는 linenum을 초기화 하기 위해 다시 csv파일 open
-f = open('popuMiniProject/202006_202006_연령별인구현황_월간_전국.csv')
+f = open('test/population/202006_202006_연령별인구현황_월간.csv')
 data = csv.reader(f)
 
 for row in data:
