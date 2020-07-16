@@ -1,7 +1,7 @@
 module.exports = (Sequelize, sequelize) => {
   const student = sequelize.define("student", {
     id: {
-      type: Sequelize.STRING(45),
+      type: Sequelize.INTEGER(10),
       primaryKey: true,
       allowNull: false,
     },
@@ -18,6 +18,6 @@ module.exports = (Sequelize, sequelize) => {
       allowNull: true,
     },
   });
-
+  student.sync();
   return student;
 };

@@ -269,17 +269,39 @@ module.exports = () => {
     }
   });
 
-  router.get("/list", async (ctx) => {
+  //select name, content from boards
+  router.get("/list1", async (ctx) => {
     const results = await models.boards
-      .findAll()
-      .map(({ id, name, content, created_at }) => {
-        return { id, name, content, created_at };
-      });
+      .findAll({ attributes : ['name','content']});
+      // .map(({ id, name, content, created_at }) => {
+      //   return { id, name, content, created_at };
+      // });
 
-    ctx.body = {
-      results,
-    };
+    ctx.body = {results};
   });
+
+  //select name, content as ct from boards
+  router.get("/list2", async (ctx) => {
+    const results = await models.boards
+      .findAll({ attributes : ['name',['content','ct']]});
+    ctx.body = {results};
+  });
+
+  //select count(name) as ct from boards
+  router.get("/list3", async (ctx) => {
+    const results = await models.boards
+      .findAll({ attributes : [sequelize.fn('COUNT', sequelize.col['name'])]});
+    ctx.body = {results};
+  });
+
+  //select name, content(name) as ct from boards
+  router.get("/list4", async (ctx) => {
+    const results = await models.boards
+      .findAll({
+        where : {name : "김기현"}
+      });
+    ctx.body = {results};
+  });  
 
   router.post("/add", async (ctx) => {
     const { name, content } = ctx.request.body;

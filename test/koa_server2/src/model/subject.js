@@ -1,7 +1,7 @@
 module.exports = (Sequelize, sequelize) => {
   const subject = sequelize.define("subject", {
     id: {
-      type: Sequelize.STRING(45),
+      type: Sequelize.INTEGER(10),
       primaryKey: true,
       allowNull: false,
     },
@@ -13,7 +13,12 @@ module.exports = (Sequelize, sequelize) => {
       type: Sequelize.INTEGER(11),
       allowNull: true,
     },
+    created_at: {
+      type: Sequelize.DATE,           
+      defaultValue: Sequelize.fn("now"),  
+      allowNull: false,
+    },
   });
-
+  subject.sync();
   return subject;
 };

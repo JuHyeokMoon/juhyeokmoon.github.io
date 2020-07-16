@@ -3,7 +3,7 @@ const studentModel = require("./student");
 const sing_upModel = require("./sing_up");
 const subjectModel = require("./subject");
 
-module.exports = (Sequelize, sequelize) => {
+module.exports = (Sequelize, sequelize) => {    //내 DB에 데이터 입력
   const boards = boardModel(Sequelize, sequelize);
   const student = studentModel(Sequelize, sequelize);
   const sing_up = sing_upModel(Sequelize, sequelize);
